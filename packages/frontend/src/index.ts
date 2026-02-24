@@ -3,6 +3,16 @@ import express from "express";
 const app = express();
 
 const API_GATEWAY = "http://api-gateway:3000";
+const USER_SERVICE = "http://user-service:3001";
+
+app.get("/admin/users", async (_req, res) => {
+  const response = await fetch(`${USER_SERVICE}/users`);
+  const users = await response.json();
+  res.send(`
+    <h1>Admin: Users</h1>
+    <pre>${JSON.stringify(users, null, 2)}</pre>
+  `);
+});
 
 app.get("/", async (_req, res) => {
   const [usersRes, productsRes] = await Promise.all([
