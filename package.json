@@ -1,0 +1,14 @@
+{
+  "name": "playground",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "likec4"
+  ],
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

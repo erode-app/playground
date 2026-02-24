@@ -1,0 +1,44 @@
+model {
+  frontend = webapp 'Web Frontend' {
+    #ui
+    description 'Customer-facing web application'
+    technology 'TypeScript'
+    link https://github.com/erode-app/playground
+    -[https]-> api_gateway
+  }
+
+  api_gateway = service 'API Gateway' {
+    #backend
+    description 'Central entry point for all API requests'
+    technology 'TypeScript'
+    link https://github.com/erode-app/playground
+
+    -[https]-> user_service
+    -[https]-> product_service
+  }
+
+  user_service = service 'User Service' {
+    #backend #microservice
+    description 'Manages user accounts and authentication'
+    technology 'TypeScript'
+    link https://github.com/erode-app/playground
+
+    -[database]-> database
+  }
+
+  product_service = service 'Product Service' {
+    #backend #microservice
+    description 'Manages product catalog and inventory'
+    technology 'TypeScript'
+    link https://github.com/erode-app/playground
+
+    -[database]-> database
+  }
+
+  database = database 'Database' {
+    #storage
+    description 'In-memory data store'
+    technology 'TypeScript'
+    link https://github.com/erode-app/playground
+  }
+}
