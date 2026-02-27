@@ -1,6 +1,6 @@
 # erode playground
 
-Demo project for [erode](https://github.com/erode-app/core) — a tool that detects architecture erosion in PRs by comparing code changes against a LikeC4 architecture model.
+Demo project for [erode](https://github.com/erode-app/core) — a tool that detects architecture erosion in PRs by comparing code changes against an architecture model.
 
 ## Architecture
 
@@ -24,7 +24,9 @@ npm run build
 
 ## Verifying with erode CLI
 
-Test that the model is set up correctly before opening a PR:
+Test that the model is set up correctly before opening a PR.
+
+### LikeC4
 
 ```bash
 # Parse and validate the LikeC4 model
@@ -35,6 +37,20 @@ npx erode components /tmp/model.json
 
 # Dry-run drift analysis on the current branch
 npx erode analyze --model /tmp/model.json --diff "$(git diff main)"
+```
+
+### Structurizr
+
+The `structurizr/` directory contains the same architecture in Structurizr format.
+`workspace.dsl` is the human-readable source; `workspace.json` is the pre-exported
+JSON that erode loads directly (no Java/Docker needed).
+
+```bash
+# Validate the Structurizr model
+npx erode validate structurizr/workspace.json --model-format structurizr
+
+# List all components
+npx erode components structurizr/workspace.json --model-format structurizr
 ```
 
 ## Architecture drift examples
