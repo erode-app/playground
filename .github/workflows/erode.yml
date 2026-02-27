@@ -24,7 +24,7 @@ jobs:
           owner: ${{ github.repository_owner }}
 
       - name: Run Erode Analysis
-        uses: erode-app/core@main
+        uses: erode-app/erode@main
         with:
           model-repo: ${{ github.repository }}
           model-path: likec4
