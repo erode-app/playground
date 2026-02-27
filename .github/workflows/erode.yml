@@ -27,7 +27,8 @@ jobs:
         uses: erode-app/core@main
         with:
           model-repo: ${{ github.repository }}
-          model-path: likec4
+          model-path: structurizr
+          model-format: structurizr
           model-ref: main
           ai-provider: gemini
           gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
