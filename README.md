@@ -1,6 +1,6 @@
 # erode playground
 
-Demo project for [erode](https://github.com/erode-app/core) — a tool that detects architecture erosion in PRs by comparing code changes against an architecture model.
+Demo project for [erode](https://github.com/erode-app/erode) — a tool that detects architecture erosion in PRs by comparing code changes against an architecture model.
 
 ## Architecture
 
