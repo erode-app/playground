@@ -28,7 +28,7 @@ jobs:
       - name: Run Erode Analysis
         uses: erode-app/erode@feat/deterministic-model-patching
         with:
-          model-repo: https://github.com/erode-app/playground-models-only
+          model-repo: erode-app/playground-models-only
           model-path: likec4
           model-ref: main
           open-pr: ${{ github.event_name == 'issue_comment' && 'true' || 'auto' }}
