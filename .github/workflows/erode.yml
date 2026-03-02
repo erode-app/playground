@@ -1,19 +1,20 @@
-name: Architecture Drift Detection
+name: Architecture Drift Check
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-
-concurrency:
-  group: erode-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
-permissions:
-  packages: read
+  issue_comment:
+    types: [created]
 
 jobs:
   erode:
-    name: Detect Architecture Drift
+    if: >-
+      (github.event_name == 'pull_request' &&
+       github.actor != 'dependabot[bot]' &&
+       !github.event.pull_request.draft)
+      ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '/erode update-model'))
     runs-on: ubuntu-latest
     steps:
       - name: Generate GitHub App Token
@@ -30,6 +31,7 @@ jobs:
           model-repo: ${{ github.repository }}
           model-path: likec4
           model-ref: https://github.com/erode-app/playground-models-only
+          open-pr: ${{ github.event_name == 'issue_comment' && 'true' || 'auto' }}
           ai-provider: gemini
           gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
           github-token: ${{ steps.app-token.outputs.token }}
