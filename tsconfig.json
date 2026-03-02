@@ -5,6 +5,7 @@
     { "path": "packages/user-service" },
     { "path": "packages/product-service" },
     { "path": "packages/api-gateway" },
-    { "path": "packages/frontend" }
+    { "path": "packages/frontend" },
+    { "path": "packages/order-service" }
   ]
 }
