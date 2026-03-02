@@ -25,11 +25,11 @@ jobs:
           owner: ${{ github.repository_owner }}
 
       - name: Run Erode Analysis
-        uses: erode-app/erode@main
+        uses: erode-app/erode@feat/deterministic-model-patching
         with:
           model-repo: ${{ github.repository }}
           model-path: likec4
-          model-ref: main
+          model-ref: https://github.com/erode-app/playground-models-only
           ai-provider: gemini
           gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
           github-token: ${{ steps.app-token.outputs.token }}
