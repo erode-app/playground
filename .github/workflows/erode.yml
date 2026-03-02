@@ -32,6 +32,6 @@ jobs:
           model-path: likec4
           model-ref: main
           open-pr: ${{ github.event_name == 'issue_comment' && 'true' || 'auto' }}
-          ai-provider: gemini
-          gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
+          ai-provider: openai
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           github-token: ${{ steps.app-token.outputs.token }}
