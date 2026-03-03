@@ -28,8 +28,9 @@ jobs:
       - name: Run Erode Analysis
         uses: erode-app/erode@main
         with:
-          model-repo: erode-app/playground-models-only
-          model-path: likec4
+          model-repo: ${{ github.repository }}
+          model-path: structurizr
+          model-format: structurizr
           model-ref: main
           open-pr: ${{ github.event_name == 'issue_comment' && 'true' || 'auto' }}
           ai-provider: openai
